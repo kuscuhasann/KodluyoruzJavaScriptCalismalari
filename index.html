@@ -10,15 +10,25 @@
   <script>
 
  let kullaniciAdi="Hasan";
- let kullaniciSifre ="1234";
+ 
+ //string ifadeyi küçük harflere çevirmek
+ kullaniciAdi=kullaniciAdi.toLowerCase();
+ console.log(kullaniciAdi);
+ //string ifadeyi büyük harflere çevirmek
+ kullaniciAdi=kullaniciAdi.toUpperCase();
+ console.log(kullaniciAdi);
+ //içeriyor mu? {% include  %}
+ //include büyük küçük harf duyarlı içerip içermediği kontrol edilmeden önce bütün metin (büy/küç)ültülebilir
+ if(kullaniciAdi.includes("S"))
+ {
+   console.log("Evet bu string deger s harfine sahip",kullaniciAdi);
+ }
+ else{
+   console.log("hayır");
+ }
+ 
 
-//string birlestirme
-//.lenght ile string ifadenin uzunlugunu bulmak
- let info=`Kullanıcı Adınız ${kullaniciAdi} Şifreniz ${kullaniciSifre}
- kullanıcı adı uzunluğunuz= ${kullaniciAdi.length}
- `
-  //console ekranına basım
- console.log(info);
+
  
   </script>
 </body>
