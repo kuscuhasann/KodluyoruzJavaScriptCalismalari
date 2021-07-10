@@ -1,4 +1,5 @@
-//Bu işlemler querySelector ile tek seferde yapılabilir 
-//erişilen deger okunabilir ve degistirilebilir
-let title =document.getElementById('title');
-console.log(title);
+let fullName=prompt("Lütfen Adınızı giriniz : ");
+
+let title=document.querySelector("#title");
+
+title.innerHTML=`${title.innerHTML} <small>${fullName}</small>`
