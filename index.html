@@ -9,12 +9,20 @@
   <p>Console ekranına baak ! :)</p>
   <script>
 
-  let price =111;
+  let price ="111";
   //bir verinin türünü görmek istersek typeof(parametre) şeklinde 
+  //bir veri türünü integer veri türüne dönüştürmek için ParseInt(parametre)
+  price=parseInt(price);
   console.log(
     "price",
+    price,
     typeof(price)
   );
+  //bir veri turunu string'e donusturmek icin
+  let sayisalDeger=23;
+  sayisalDeger=sayisalDeger.toString();
+  console.log("sayisalDeger",sayisalDeger,typeof(sayisalDeger));
+  //not parseFloat=float donusturur , Number = ilgili degiskeni number'a donusturur
  
   </script>
 </body>
