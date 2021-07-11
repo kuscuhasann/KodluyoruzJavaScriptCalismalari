@@ -1,9 +1,9 @@
 
+let title=document.querySelector("#title");
+title.addEventListener("click", clickEvent);
 
-let loginSend=(kullaniciAdi,kullaniciSifre)=>
+function clickEvent()
 {
-    let info = `"Kullancı Adınız: "${kullaniciAdi} "Şifreniz: " ${kullaniciSifre}`;
-    console.log(info);
+    console.log("tıklandı");
+    this.style.color="red";
 }
-
-loginSend("selami",2313);
