@@ -1,9 +1,7 @@
+let user={userName:"hasanKuscu",isActive:true};
 
-let title=document.querySelector("#title");
-title.addEventListener("click", clickEvent);
+localStorage.setItem("userInfo",JSON.stringify(user));
 
-function clickEvent()
-{
-    console.log("tıklandı");
-    this.style.color="red";
-}
+let userInfo=JSON.parse(localStorage.getItem("userInfo"));
+
+console.log(userInfo);
