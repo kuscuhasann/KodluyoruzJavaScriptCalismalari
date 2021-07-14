@@ -1,4 +1,19 @@
-const products=["Mic","Cable","Speaker","Desktop PC","Server","Mouse","Keyboard"];
+const person = [{
+  name: "Adem",
+  age: 25,
+  languages: ["", "CSS"],
+},
+{
+  name: "Oğuz",
+  age: 33,
+  languages: ["Java", "JavaScript"],
+  }
+];
 
-const newProducts=products.filter(item=>item.length>5);
-console.log(newProducts);
+//Yaşı 30 dan büyük kişilerin getirilmesi
+const newAgePerson=person.filter(item=>item.age>30);
+console.log(newAgePerson);
+//JavaScript bilen kişilerin getirilmesi
+const newLanguagePerson=person.filter(item=>item.languages.includes("JavaScript"));
+console.log(newLanguagePerson);
+
