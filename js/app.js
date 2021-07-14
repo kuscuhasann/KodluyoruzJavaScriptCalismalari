@@ -1,7 +1,4 @@
-const numbers = [12, 24, 36];
-const newArray = []; 
+const products=["Mic","Cable","Speaker","Desktop PC","Server","Mouse","Keyboard"];
 
- numbers.forEach((numbers) => {
-     newArray.push(numbers+2);
- })
- console.log(newArray);
+const newProducts=products.filter(item=>item.length>5);
+console.log(newProducts);
