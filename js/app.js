@@ -1,19 +1,8 @@
-const person = [{
-  name: "Adem",
-  age: 25,
-  languages: ["", "CSS"],
-},
-{
-  name: "Oğuz",
-  age: 33,
-  languages: ["Java", "JavaScript"],
-  }
-];
+const users=["AYSE","MehMet","HasAN","SELAmi"];
 
-//Yaşı 30 dan büyük kişilerin getirilmesi
-const newAgePerson=person.filter(item=>item.age>30);
-console.log(newAgePerson);
-//JavaScript bilen kişilerin getirilmesi
-const newLanguagePerson=person.filter(item=>item.languages.includes("JavaScript"));
-console.log(newLanguagePerson);
-
+const userObj=users.map(item=>(
+  {userName:item,shortName:`${item[0]}.`,newName:`${item[0].toUpperCase()}${item.slice(1).toLowerCase()}`}
+  
+)
+)
+console.log(userObj);
