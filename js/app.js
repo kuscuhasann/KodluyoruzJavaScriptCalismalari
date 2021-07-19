@@ -1,50 +1,149 @@
-//tanımlamalar
-const ulDom=document.querySelector("#list");
-let yapilacaklarList =localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-//liste elemanlarının getirilmesi işlemi
-  for(let i=0;i<yapilacaklarList.length;i++){
-    let liCreator=document.createElement('li');
-    liCreator.innerHTML=`${i+1} :  ${yapilacaklarList[i]} <span onclick="deleteElement()" class="close">×</span>`;
-    ulDom.append(liCreator);
-  }
-  function deleteElement(list){
-    let deleteDom=document.querySelector("#deleteItem").value;
-    yapilacaklarList.splice(deleteDom-1,1);
-    console.log("silindi");
-    localStorage.setItem("items",JSON.stringify(yapilacaklarList));
-  }
+const menu = [
+    {
+      id: 1,
+      title: "Tteokbokki",
+      category: "Korea",
+      price: 10.99,
+      img:
+        "https://twoplaidaprons.com/wp-content/uploads/2020/09/tteokbokki-top-down-view-of-tteokbokki-in-a-bowl-500x500.jpg",
+      desc: `Spicy rice cakes, serving with fish cake.`,
+    },
+    {
+      id: 2,
+      title: "Chicken Ramen",
+      category: "Japan",
+      price: 7.99,
+      img:
+        "https://www.forkknifeswoon.com/wp-content/uploads/2014/10/simple-homemade-chicken-ramen-fork-knife-swoon-01.jpg",
+      desc: `Chicken noodle soup, serving with vegetables such as soy bean, green onion. In an optional you can ask for egg. `,
+    },
+    {
+      id: 3,
+      title: "Bibimbap",
+      category: "Korea",
+      price: 8.99,
+      img:
+        "https://dwellbymichelle.com/wp-content/uploads/2020/05/DWELL-bibimbap.jpg",
+      desc: `Boiling vegetables, serving with special hot sauce`,
+    },
+    {
+      id: 4,
+      title: "Dan Dan Mian",
+      category: "China",
+      price: 5.99,
+      img:
+        "https://www.savingdessert.com/wp-content/uploads/2019/02/Dan-Dan-Noodles-10.jpg",
+      desc: `Dan dan noodle, serving with green onion `,
+    },
+    {
+      id: 5,
+      title: "Yangzhou Fried Rice",
+      category: "China",
+      price: 12.99,
+      img:
+        "https://salu-salo.com/wp-content/uploads/2013/02/Yangzhou-Fried-Rice1.jpg",
+      desc: `Yangzhou style fried rice, serving with bean and pickles `,
+    },
+    {
+      id: 6,
+      title: "Onigiri",
+      category: "Japan",
+      price: 9.99,
+      img:
+        "https://www.manusmenu.com/wp-content/uploads/2017/08/Onigiri-3-1-of-1.jpg",
+      desc: `Rice Sandwich, serving with soy sauce`,
+    },
+    {
+      id: 7,
+      title: "Jajangmyeon",
+      category: "Korea",
+      price: 15.99,
+      img:
+        "https://www.curiouscuisiniere.com/wp-content/uploads/2020/04/Jajangmyeon-Korean-Noodles-in-Black-Bean-Sauce5.1200H-720x540.jpg",
+      desc: `Black bean sauce noodle, serving with green onion `,
+    },
+    {
+      id: 8,
+      title: "Ma Yi Shang Shu",
+      category: "China",
+      price: 12.99,
+      img:
+        "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/F688C2F6-86EC-46C4-B9C7-A6BA01DF7437/Derivates/32E3E72A-F786-406D-AF7F-B30980A9AC6C.jpg",
+      desc: `Hot pepper sauce noodle, serving with soy bean and onion`,
+    },
+    {
+      id: 9,
+      title: "Doroyaki",
+      category: "Japan",
+      price: 3.99,
+      img:
+        "https://www.justonecookbook.com/wp-content/uploads/2011/10/Dorayaki-New-500x400.jpg",
+      desc: `Red bean paste dessert, serving with honey.`,
+    },
+  ];
 
-ulDom.addEventListener("click", function (list) {
-  if (list.target.tagName === "LI") {
-    list.target.classList.toggle("checked");
-  }
-},
-false
-);
 
-//Listeye item eklemek.
-function addItemList(inputDom){
-  const liDom=document.createElement('li');
-  liDom.innerHTML=` ${inputDom}`;
- 
-  ulDom.append(liDom);
-  yapilacaklarList.push(inputDom);
-  console.log(yapilacaklarList);
-  localStorage.setItem("items",JSON.stringify(yapilacaklarList));
+  //Kod
+  const ulDom=document.querySelector("#cards");
+  //Card Func.
+  let cards=(title,price,img,desc)=>`<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="${img}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${title}</h5>
+        <p class="card-text">${desc}</p>
+        <p class="card-text"><small class="text-muted">${price}</small></p>
+      </div>
+    </div>
+  </div>
+</div>`
 
-}
-
-function newElement()
+const getAllMenu=()=>
 {
-  const inputDom=document.querySelector("#task").value;
-  if(inputDom){
-    addItemList(inputDom);
-    $(".success").toast("show");
-  }
-  else{
-    $(".error").toast("show")
+  document.getElementById("cards").innerHTML = "";
+  for(let i=0;i<menu.length;i++)
+{
+    let liDom=document.createElement('li');
+    liDom.innerHTML=cards(menu[i].title,menu[i].price,menu[i].img,menu[i].desc);
+    ulDom.append(liDom);
+}
+}
+getAllMenu();
+const getJapanMenu=()=>
+{
+  document.getElementById("cards").innerHTML = "";
+  const japanFood=menu.filter(item=>item.category.includes("Japan"));
+  for(let i=0;i<japanFood.length;i++)
+  {
+    let liDom=document.createElement('li');
+    liDom.innerHTML=cards(japanFood[i].title,japanFood[i].price,japanFood[i].img,japanFood[i].desc);
+    ulDom.append(liDom);
   }
 }
-
-
+const getChinaMenu=()=>
+{
+  document.getElementById("cards").innerHTML = "";
+  const chinaFood=menu.filter(item=>item.category.includes("China"));
+  for(let i=0;i<chinaFood.length;i++)
+  {
+    let liDom=document.createElement('li');
+    liDom.innerHTML=cards(chinaFood[i].title,chinaFood[i].price,chinaFood[i].img,chinaFood[i].desc);
+    ulDom.append(liDom);
+  }
+}
+const getKoreaMenu=()=>
+{
+  document.getElementById("cards").innerHTML = "";
+  const koreaFood=menu.filter(item=>item.category.includes("Korea"));
+  for(let i=0;i<koreaFood.length;i++)
+  {
+    let liDom=document.createElement('div');
+    liDom.classList.add("menu-items col-lg-6 col-sm-2");
+    liDom.innerHTML=cards(koreaFood[i].title,koreaFood[i].price,koreaFood[i].img,koreaFood[i].desc);
+    ulDom.append(liDom);
+  }
+}
 
